@@ -10,10 +10,11 @@ import userRoutes from './routes/user.routes.js'
 
 
 import connectToMongoDB from './db/connectTomongoDB.js';
+import { app, server } from './socket/socket.js';
 
 
 
-const app = express();
+
 const PORT = process.env.PORT || 5000
 
 
@@ -32,10 +33,10 @@ app.use("/api/users",userRoutes)
 
 
 
-app.get("/",(req,res)=>{
-    //root route
-    res.send("server is ready");
-})
+// app.get("/",(req,res)=>{
+//     //root route
+//     res.send("server is ready");
+// })
 
 
 
@@ -43,7 +44,7 @@ app.get("/",(req,res)=>{
 
 
 
-app.listen(PORT,()=>{
+server.listen(PORT,()=>{
     
     connectToMongoDB();
     console.log(`server listening on ${PORT}`)

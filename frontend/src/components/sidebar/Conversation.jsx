@@ -1,7 +1,7 @@
 import React from "react";
 import useConversation from "../../zustand/useConversation";
 
-const Conversation = ({ conversation, emoji, lastIdx }) => {
+const Conversation = ({ conversation, emoji, lastIdx ,online}) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const isSelected = selectedConversation?._id === conversation._id;
   // console.log(isSelected)
@@ -20,7 +20,7 @@ const Conversation = ({ conversation, emoji, lastIdx }) => {
          
       }
       >
-        <div className="avatar online">
+        <div className={`avatar ${online?"online":""}`}>
           <div className="w-12 rounded-full">
             <img src={conversation.profilePic} alt="user avatar" />
           </div>

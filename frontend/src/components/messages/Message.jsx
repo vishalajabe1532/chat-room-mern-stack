@@ -11,6 +11,10 @@ const Message = ({message}) => {
   // Format the date
   const formattedDate = `${String(createdAt.getHours()).padStart(2, '0')}:${String(createdAt.getMinutes()).padStart(2, '0')} ${String(createdAt.getDate()).padStart(2, '0')}-${String(createdAt.getMonth() + 1).padStart(2, '0')}-${createdAt.getFullYear()}`;
 
+
+  const shakeClass = message.shouldShake ? "shake":"";
+  
+
   return (
     <div>
       <div className={`chat ${fromMe? "chat-end" : "chat-start"} `}>
@@ -22,8 +26,8 @@ const Message = ({message}) => {
             />
           </div>
         </div>
-        <div className={`chat-bubble text-white ${fromMe ? "bg-blue-500":""}`}>{message.message}</div>
-        <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">{formattedDate}</div>
+        <div className={`chat-bubble text-white ${fromMe ? "bg-blue-500":""} ${shakeClass}`}>{message.message}</div>
+        <div className={`chat-footer  text-xs flex gap-1 items-center ${fromMe ? "text-white" : "text-black"}`}>{formattedDate}</div>
       </div>
     </div>
   );

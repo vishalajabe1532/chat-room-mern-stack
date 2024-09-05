@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import Message from "./Message";
 import useGetMessages from "../../hooks/useGetMessages";
-import useConversation from "../../zustand/useConversation";
-import MessageSkeleton from "../skeletons/MessageSkeleton";
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { loading, messages } = useGetMessages();
+
+  useListenMessages();
 
   // const last
   const lastMessageRef = useRef();
@@ -13,7 +14,7 @@ const Messages = () => {
   useEffect(() => {
     setTimeout(()=>{
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
-    },100)
+    },150)
   }, [messages]);
 
   messages.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
