@@ -19,12 +19,7 @@ dotenv.config();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://chat-app-ipse.onrender.com", // or '*' to allow all origins
-    methods: ["GET", "POST"],
-  })
-);
+
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);

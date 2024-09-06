@@ -17,10 +17,15 @@ app.use(function(req, res, next) {
 const server = http.createServer(app);
 const io = new Server(server,{
     cors:{
-        origin:"https://chat-app-ipse.onrender.com",
+        origin:'*',
         methods:["GET","POST"],
-    }
+        credentials:true,
+    },
+    allowEIO3: true,
+
 });
+
+
 
 
 
