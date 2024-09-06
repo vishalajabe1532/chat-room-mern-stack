@@ -19,7 +19,7 @@ export const SocketContextProvider=({children})=>{
 
     useEffect(()=>{
         if(authUser){
-            const newSocket = io("https://chat-room-prod.onrender.com",{
+            const newSocket = io("https://chat-app-ipse.onrender.com",{
                 query:{
                     userId:authUser._id,
 
